@@ -1,4 +1,5 @@
 #include <sourcemod>
+#include <admincache>
 
 public Plugin:myinfo = 
 {
@@ -33,4 +34,26 @@ public OnPluginStart()
 	// Server Language
 	GetConVarString(FindConVar("sv_language"), language, sizeof(language));
 	PrintToServer("Server language: %s", language);
+	
+	new String:admins[][MAX_NAME_LENGTH];
+        new adminCount = 0;
+        
+        
+        for (new i = 1; i <= MaxClients; i++)
+        {
+            // Wenn der Spieler ein Admin ist, füge seinen Namen zur Liste hinzu
+            if (GetUserAdmin(i))
+            {
+                GetClientName(i, admins[adminCount], sizeof(admins[adminCount]));
+                adminCount++;
+            }
+        }
+        
+        // Gib die Liste der Admins aus
+        PrintToServer("Admins:");
+        for (new i = 0; i < adminCount; i++)
+        {
+            PrintToServer("- %s", admins[i]);
+        }
+    }
 }
