@@ -12,18 +12,18 @@ public Plugin:myinfo =
 public OnPluginStart()
 {
 	new String:serverName[64];
-    new String:mapName[64];
+    	new String:mapName[64];
 	new String:language[64];
 	new time = GetTime();
 	new String:formattedTime[64];
 	
 	new playerCount = GetPlayerCount();
 	
-    GetConVarString(FindConVar("hostname"), serverName, sizeof(serverName));
-    GetMapName(mapName, sizeof(mapName));
+   	GetConVarString(FindConVar("hostname"), serverName, sizeof(serverName));
+    	GetMapName(mapName, sizeof(mapName));
 	
 	PrintToServer("Server name: %s", serverName);
-    PrintToServer("Current map: %s", mapName);
+    	PrintToServer("Current map: %s", mapName);
 	PrintToServer("Number of players: %d", playerCount);
 	
 	// Server Time
