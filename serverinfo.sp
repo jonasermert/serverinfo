@@ -35,9 +35,9 @@ public OnPluginStart()
 	GetConVarString(FindConVar("sv_language"), language, sizeof(language));
 	PrintToServer("Server language: %s", language);
 	
+	// Liste der Admins
 	new String:admins[][MAX_NAME_LENGTH];
         new adminCount = 0;
-        
         
         for (new i = 1; i <= MaxClients; i++)
         {
@@ -49,7 +49,6 @@ public OnPluginStart()
             }
         }
         
-        // Gib die Liste der Admins aus
         PrintToServer("Admins:");
         for (new i = 0; i < adminCount; i++)
         {
